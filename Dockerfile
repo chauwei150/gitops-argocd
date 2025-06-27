@@ -1,2 +1,9 @@
-From nginx:latest
-COPY index.html /usr/share/nginx/html
+FROM python:3.12
+
+RUN pip install flask
+
+COPY app.py /app.py
+
+EXPOSE 80
+
+CMD ["python3", "/app.py"]
