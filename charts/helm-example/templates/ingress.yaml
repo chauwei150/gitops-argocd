@@ -1,11 +1,9 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "helm-example.fullname" . -}}
 {{- $svcPort := .Values.service.port -}}
-{{- if semverCompare ">=1.14-0" .Capabilities.KubeVersion.GitVersion -}}
+
 apiVersion: networking.k8s.io/v1
-{{- else -}}
-apiVersion: extensions/v1
-{{- end }}
+
 kind: Ingress
 metadata:
   name: {{ $fullName }}
@@ -35,8 +33,10 @@ spec:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: {{ $fullName }}
-              servicePort: {{ $svcPort }}
+              service:
+                name: {{ $fullName }}
+                port: 
+                  number: {{ $svcPort }}
         {{- end }}
   {{- end }}
 {{- end }}
