@@ -1,9 +1,10 @@
-FROM python:3.12
+FROM python:3.12-slim
 
-RUN pip install flask
+WORKDIR /app
 
-COPY app.py /app.py
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-EXPOSE 80
+COPY . .
 
-CMD ["python3", "/app.py"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
