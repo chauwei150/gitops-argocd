@@ -44,7 +44,7 @@ ingress:
     - host: nlb.fangcorp88.com
       paths:
       - path: /
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: argotest1-helm-example
