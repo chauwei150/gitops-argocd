@@ -42,7 +42,14 @@ ingress:
     kubernetes.io/tls-acme: "true"
   hosts:
     - host: nlb.fangcorp88.com
-      paths: /
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argotest1-helm-example
+            port:
+              number: 80
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
