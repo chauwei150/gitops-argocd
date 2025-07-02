@@ -6,8 +6,8 @@ replicaCount: 1
 
 image:
   pullPolicy: IfNotPresent
-  repository: 590184037514.dkr.ecr.us-west-2.amazonaws.com/chauwei150/gitops-argocd
-  version: main-e44fdf4
+  repository: 145664717845.dkr.ecr.ap-south-1.amazonaws.com/gitops-argocd
+  version: main-8471792
 
 imagePullSecrets: []
 nameOverride: ""
@@ -20,46 +20,45 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name:
 
-podSecurityContext: 
-  #fsGroup: 2000
+podSecurityContext: {}
+  # fsGroup: 2000
 
-securityContext: 
-  #capabilities:
-  #  drop:
-  #    - ALL
-        #readOnlyRootFilesystem: true
-        #runAsNonRoot: true
-        #runAsUser: 1000
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
 service:
   type: LoadBalancer
   port: 80
 
 ingress:
-  enabled: true
-  className: "nginx"
-  annotations: 
-    kubernetes.io/ingress.class: nginx
-    kubernetes.io/tls-ac0me: "true"
+  enabled: false
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: ingress.fangtech88.com
-      paths:
-      - path: "/"
-        pathType: ImplementationSpecific
-    
+    - host: chart-example.local
+      paths: []
   tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
 
-resources: 
+resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
 
 nodeSelector: {}
 
