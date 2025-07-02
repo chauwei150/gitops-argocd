@@ -48,9 +48,9 @@ ingress:
         pathType: ImplementationSpecific
     
   tls: 
-    - secretName: chart-example-tls
-      hosts:
-        - www.fangtech.com
+    #  - secretName: chart-example-tls
+    #  hosts:
+    #    - www.fangtech.com
 
 resources: 
   # We usually recommend not to specify default resources and to leave this as a conscious
