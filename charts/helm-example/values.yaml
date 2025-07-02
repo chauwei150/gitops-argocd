@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   pullPolicy: IfNotPresent
-  repository: 590184037514.dkr.ecr.us-west-2.amazonaws.com/gitops-argocd
+  repository: 590184037514.dkr.ecr.us-west-2.amazonaws.com/chauwei150/gitops-argocd
   version: main-e44fdf4
 
 imagePullSecrets: []
@@ -42,7 +42,7 @@ ingress:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-ac0me: "true"
   hosts:
-    - host: www.fangtech88.com
+    - host: ingress.fangtech88.com
       paths:
       - path: "/"
         pathType: ImplementationSpecific
