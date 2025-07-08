@@ -8,8 +8,8 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 443
+      targetPort: 80
       protocol: TCP
-      name: https
+      name: http
   selector:
     {{- include "helm-example.selectorLabels" . | nindent 4 }}
